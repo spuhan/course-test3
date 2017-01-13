@@ -11,17 +11,25 @@
 
     function NarrowItDownController(MenuSearchService) {
         var search = this;
+        search.errorMessage = "";
 
         search.getMatchedMenuItems = function(searchTerm) {
 
-            var promise = MenuSearchService.getMatchedMenuItems(searchTerm);
+            if (searchTerm !== undefined && searchTerm !== '') {
+                search.errorMessage = "";
 
-            promise.then(function(response) {
-                    search.foundItemsList = response;
-                })
-                .catch(function(error) {
-                    console.log("Something went terribly wrong.");
-                });
+                var promise = MenuSearchService.getMatchedMenuItems(searchTerm);
+
+                promise.then(function(response) {
+                        search.foundItemsList = response;
+                    })
+                    .catch(function(error) {
+                        console.log("Something went terribly wrong.");
+                    });
+            } else {
+                search.foundItemsList = "";
+                search.errorMessage = "Nothing found";
+            }
         };
 
 

@@ -21,9 +21,9 @@
             <button class="btn btn-primary" ng-click="search.getMatchedMenuItems(search.searchTerm);">Narrow It Down For Me!</button>
         </div>
 
-
         <!-- found-items should be implemented as a component-->
         <found-items items="search.foundItemsList" on-remove="search.removeItem(index)"></found-items>
+        <div ng-if=search.errorMessage>{{search.errorMessage}}</div>
     </div>
 
 </body>
