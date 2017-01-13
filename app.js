@@ -29,6 +29,7 @@
             } else {
                 search.foundItemsList = "";
                 search.errorMessage = "Nothing found";
+                return false;
             }
         };
 
